@@ -40,10 +40,14 @@
          * @param {String} [selectedValue]
          */
         this.populateSelectList = function(selId, promptStr, arr, opts) {
-            if(opts) {
+            if(typeof(opts) == 'object') {
                 var selectedValue = opts.selectedValue;
                 var name = opts.name;
                 var text = opts.text;
+                var localize = opts.localize;
+            } else {
+                var selectedValue = opts;
+                var name = 'none';
             }
 
             var selJq = $(selId);
