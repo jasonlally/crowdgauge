@@ -175,14 +175,12 @@
 
             var mainCircleFill = function (d) {
                 var score = scores[d.id];
-                console.log(score);
                 if (score == null) return "#CCCCCC";
                 var adjScore = score;
                 if (adjScore != 0) {//--a hack to move away from the center (to make it more obvious whether small value are +ve or -ve)
                     adjScore += (adjScore > 0) ? 0.5 : -0.5;
                 }
                 var scoreFrac = (adjScore + bigScore) / (bigScore * 2);
-                console.log(scoreFrac);
                 return _getGradientColor(colorRamp, scoreFrac);
             };
 
