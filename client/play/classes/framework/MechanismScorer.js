@@ -16,8 +16,7 @@
             if (priorities == null) return 0;
             var numValid = 0;
             var tot = 0;
-//            $.each(priorities.children, function (i, priority) {
-            $.each(priorities, function (i, priority) { // modified by ycui, 04262013
+            $.each(priorities.children, function (i, priority) {
                 var str_val = (_mechanism.values[priority.id]) ? _mechanism.values[priority.id] : "na";
                 if (str_val == "na") return true;//continue
                 var val = parseFloat(str_val);
@@ -27,14 +26,11 @@
             return tot / numValid;
         };
 
-        this.appendScores = function (multiplier, micon, scores) {
+        this.appendScores = function (multiplier, scores) {
             $.each(_mechanism.values, function (priorityId, mpr) {
                 var str_val = mpr;
                 if (str_val == "na" || str_val == "") return true;//continue
                 var val = parseFloat(str_val);
-                if (micon.getThumbs() == -1) {
-                    val = 0;
-                }
                 var score = multiplier * val;
                 if (scores[priorityId] == null) {
                     scores[priorityId] = score;

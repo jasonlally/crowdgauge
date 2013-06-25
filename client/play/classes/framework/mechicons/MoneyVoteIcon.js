@@ -27,7 +27,7 @@
         var _onSelectionChange = function () {
         };
         var _type = 'coins';
-        var _thumbState;
+        var _thumbState = null;
         var _thumbs = 0;
 
         var _currentClass = function () {
@@ -133,7 +133,11 @@
 
         this.getThumbs = function () {
             return _thumbs;
-        }
+        };
+
+        this.getThumbState = function () {
+            return _thumbState;
+        };
 
         /**
          * @param {Number} [max] optional maximum for return value
@@ -143,7 +147,12 @@
             var val = 0;
             if (_mAction.value) val = _mAction.value;
             if (max) return Math.min(val, max);
+            if (_self.useInverseScore()) val *= -1;
             return val;
+        };
+
+        this.useInverseScore = function () {
+            return _thumbState == 'down';
         };
 
         this.setEnabled = function (enabled) {

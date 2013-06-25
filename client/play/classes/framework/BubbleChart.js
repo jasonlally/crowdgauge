@@ -4,7 +4,7 @@
  * Time: 11:28 PM
  */
 (function () { // self-invoking function
-    SAS.BubbleChart = function (priorityList) {
+    SAS.BubbleChart = function (priorityList, backgroundMode) {
         var _self = this;
         var PRIORITY = "priority";
         var MONEY = "money";
@@ -18,6 +18,7 @@
 
         /** @type SAS.PriorityList */
         var _priorityList = priorityList;
+        var _backgroundMode = backgroundMode;
         var _onBubbleClick = function (id) {
         };
         var _colorMode = PRIORITY;
@@ -75,7 +76,7 @@
             var delay = 100;
             var maxFill = 0.8;//--otherwise preview circles overwhelm others
             if (mechanism && micon) {
-                var r = maxFill * Math.sqrt(100 * micon.getMultiplier(1.2)) * 10;
+                var r = maxFill * Math.sqrt(100 * Math.abs(micon.getMultiplier(1.2))) * 10;
                 _overlayCircles
                     .style("fill", null)
                     .style("opacity", _overlayOpac)
@@ -87,15 +88,9 @@
                         return 0;
                     })
                     .attr("class", function (d) {
-                        if (mechanism != null) {
-                            var score = mechanism.values[d.id];
-                            if (micon.getThumbs() == - 1) score = 0;
-                            if (_scoreCounts(score)) return "score_" + score;
-                            return "nofill";
-                        }
-                        return "nofill";
+                        return _getBubbleClass(mechanism, d.id, micon);
                     })
-                    .attr("r", r/1.5);
+                    .attr("r", r / 1.5);
 
                 _overlayCircles.transition()
                     .ease("bounce")
@@ -111,6 +106,19 @@
             }
         };
 
+        var _getBubbleClass = function (mechanism, id, micon) {
+            if (mechanism != null) {
+                var score = mechanism.values[id];
+                if (micon.useInverseScore()) {
+                    if (_scoreCounts(score)) return "score_" + (-score);
+                } else {
+                    if (_scoreCounts(score)) return "score_" + score;
+                }
+                return "nofill";
+            }
+            return "nofill";
+        };
+
         var _colorByMoney = function (mechanism, micon, scores) {
             var colorRamp = ["#ec7623", "#fbc917", "#EAD9C4", "#afd7cc", "#2BBEC5"];
             var bigScore = 5;
@@ -118,7 +126,7 @@
 
             var delay = 100;
             if (mechanism && micon) {
-                var r = Math.sqrt(100 * micon.getMultiplier()) * 10;
+                var r = Math.sqrt(100 * Math.abs(micon.getMultiplier())) * 10;
                 _overlayCircles
                     .style("fill", null)
                     .style("opacity", _overlayOpac)
@@ -130,13 +138,7 @@
                         return 0;
                     })
                     .attr("class", function (d) {
-                        if (mechanism != null) {
-                            var score = mechanism.values[d.id];
-                            if (micon.getThumbs() == - 1) score = 0;
-                            if (_scoreCounts(score)) return "score_" + score;
-                            return "nofill";
-                        }
-                        return "nofill";
+                        return _getBubbleClass(mechanism, d.id, micon);
                     });
 
                 if (micon.isOn()) {
@@ -157,6 +159,7 @@
                                 .attr("r", 0)
                                 .style("opacity", _overlayOpac);
                         });
+
                 } else {
                     delay = 600;
                     _overlayCircles
@@ -170,19 +173,28 @@
                 }
             }
 
-            _mainCircles.transition()
-                .delay(delay)
-                .duration(800)
-                .style("fill", function (d) {
-                    var score = scores[d.id];
-                    if (score == null ) return "#CCCCCC";
-                    var adjScore = score;
-                    if (adjScore != 0) {//--a hack to move away from the center (to make it more obvious whether small value are +ve or -ve)
-                        adjScore += (adjScore > 0) ? 0.5 : -0.5;
-                    }
-                    var scoreFrac = (adjScore + bigScore) / (bigScore * 2);
-                    return _getGradientColor(colorRamp, scoreFrac);
-                });
+            var mainCircleFill = function (d) {
+                var score = scores[d.id];
+                console.log(score);
+                if (score == null) return "#CCCCCC";
+                var adjScore = score;
+                if (adjScore != 0) {//--a hack to move away from the center (to make it more obvious whether small value are +ve or -ve)
+                    adjScore += (adjScore > 0) ? 0.5 : -0.5;
+                }
+                var scoreFrac = (adjScore + bigScore) / (bigScore * 2);
+                console.log(scoreFrac);
+                return _getGradientColor(colorRamp, scoreFrac);
+            };
+
+            if (_backgroundMode) {
+                _mainCircles.style("fill", mainCircleFill);
+            } else {
+                _mainCircles.transition()
+                    .delay(delay)
+                    .duration(800)
+                    .style("fill", mainCircleFill);
+            }
+
         };
 
         var _colorBySize = function () {

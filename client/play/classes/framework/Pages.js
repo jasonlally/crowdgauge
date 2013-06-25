@@ -17,7 +17,7 @@
         var BTN_SUBMIT = "submit";
         var BTN_SHARE = "share";
 
-        var _pageIds = [INTRO, PRIORITIES, MONEY];  //remove IMPACTS POLICIES temp
+        var _pageIds = [INTRO, PRIORITIES, MONEY, POLICIES];  //remove IMPACTS POLICIES temp
         var _btnStates = [BTN_NEXT, BTN_SUBMIT, BTN_SHARE];
         var _cacheVersion = SAS.mainInstance.getCacheVersion();
         var _pageTitles = new Array();
@@ -224,7 +224,7 @@
             }
             _bubbleChart.showDivs(true);
             _showMoreInfo(false);
-            _showNextButton(true, (_submitted) ? BTN_SHARE : BTN_SUBMIT ); //TODO: check for policies, go to policies if they exist, otherwise submit (_submitted) ? BTN_SHARE : BTN_SUBMIT
+            _showNextButton(true, BTN_NEXT ); //TODO: check for policies, go to policies if they exist, otherwise submit (_submitted) ? BTN_SHARE : BTN_SUBMIT
             _showBackButton(true, BTN_BACK);
             _setClickToInfoWin();
             if (!_moneyShown) {

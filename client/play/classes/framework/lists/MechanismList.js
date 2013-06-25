@@ -122,7 +122,7 @@
                             if(_actionDefs[action.aId].value == 0) {
                                 _radioClick(mechanism, micon); //exclusive selection between thumbs up and down
                             }
-                            _recalcMoney(mechanism, micon);
+                            _recalcMoney(mechanism, micon, micon.getThumbState());
                         });
                     });
                 });
@@ -159,7 +159,7 @@
             SAS.localizr.setActiveLang();
         };
 
-        var _recalcMoney = function (mechanism, micon) {
+        var _recalcMoney = function (mechanism, micon, thumbState) {
             var scores = {};
             var coinsUsed = 0;
             $.each(_super._mechanisms(), function (i, mechanism) {
@@ -168,11 +168,11 @@
                 $.each(micons, function (j, micon) {
                     if (micon.isOn()) {
                         coinsUsed += micon.getTotalCoins();
-                        new SAS.MechanismScorer(mechanism).appendScores(micon.getMultiplier(), micon, scores);
+                        new SAS.MechanismScorer(mechanism).appendScores(micon.getMultiplier(), scores);
                     }
                 });
             });
-            _bigBubbleChart.colorByMoney(mechanism, micon, scores);
+            _bigBubbleChart.colorByMoney(mechanism, micon, scores, thumbState);
             _recalcCoinBalance(coinsUsed);
         };
 
