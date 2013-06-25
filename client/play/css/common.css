@@ -5,6 +5,32 @@ body {
 }
 
 .ui-widget-header {
-    background: rgb(112, 148, 61);
+    background: #3D9470;
     border: #aade6f;
+}
+
+.popover {
+    background-color: #3D9470;
+}
+
+.popover-title {
+    background-color: #3D9470;
+    border-bottom: 1px solid #aade6f;
+}
+
+
+.popover.top .arrow:after {
+    border-top-color: #3D9470;
+}
+
+.popover.right .arrow:after {
+    border-right-color: #3D9470;
+}
+
+.popover.bottom .arrow:after {
+    border-bottom-color: #3D9470;
+}
+
+.popover.left .arrow:after {
+    border-left-color: #3D9470;
 }
