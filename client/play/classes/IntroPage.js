@@ -109,6 +109,7 @@
         };
 
         var _initialize = function () {
+            /*
             _populateControls($('#introFrm'));
             $('.demoInput select').change(function () {
                 $('label[for="'+$(this).attr("id")+'"]').toggleClass("nonvalid", SAS.controlUtilsInstance.isPrompt($(this).val()));
@@ -116,7 +117,7 @@
             _$btnStart.click(function () {
                 if (_validate()) _onStartClick();
 //                _onStartClick();
-            });
+            });    */
         };
         //endregion
 

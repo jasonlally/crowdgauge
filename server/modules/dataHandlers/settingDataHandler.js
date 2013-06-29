@@ -30,6 +30,8 @@ var Enums = require('../../../shared/classes/modules/Enums');
  */
 SettingDataHandler = function () {
     var _self = this;
+    var _closed = false;
+
     aDataHandler.ADataHandler.call(this, db_name);
     var _filename = "NRV"; // TODO: filename
 
@@ -77,11 +79,19 @@ SettingDataHandler = function () {
             }
         });
     }
+
+    var _isClosed = function (req, res) {
+        return
+    }
     //endregion
 
     //region public API
     this.getLocations = function (req, res, postData) { // for client-side
         _getLocations(req, res);
+    }
+
+    this.isClosed = function (req, res) {
+        return _closed;
     }
     //endregion
 
