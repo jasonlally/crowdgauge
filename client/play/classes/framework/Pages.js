@@ -55,8 +55,8 @@
         _pageTitles['intro'] = '';
         _pageTitles['priorities'] = 'My priorities for Oklahoma City’s future are...';
         _pageTitles['impacts'] = 'Explore how different projects and policies affect your priorities...';
-        _pageTitles['money'] = 'Put your money where your mouse is...';
-        _pageTitles['policies'] = 'Tell us which policies you would like to see in Oklahoma City...';
+        _pageTitles['money'] = 'I would support actions and investments that...';
+        _pageTitles['policies'] = 'I would support pursuing the following policy ideas...';
 
         var _selectTab = function (pageId) {
             $(".tabTitle").removeClass("tabTitleHighlight");
@@ -116,9 +116,9 @@
                 document.location.reload(true);
                 return;
             }
-            if (!_mechanismData) {
+            /*if (!_mechanismData) {
                 _instructions.showIntroDialog();
-            }
+            } */
             _activePage = INTRO;
             _introPage.showDivs(true);
             _priorityList.showDivs(false);
@@ -406,6 +406,7 @@
                         _submitted = true;
                         _showNextButton(false, BTN_SHARE);
                         _showSharingDialog(entryId, "Your response has been submitted. Thank you for your time. ");
+                        setTimeout(function() {window.location = 'http://www.planokc.org'}, 3000);
                     });
                 } else if ($(this).hasClass("bigButton_" + BTN_SHARE)) {
                     _showSharingDialog(_dataManager.getEntryId(), "");

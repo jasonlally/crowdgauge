@@ -7,7 +7,6 @@
 
 .mechSub {
   margin-left: 42px;
-  font-size: .75em;
 }
 
 .tabTitle {
@@ -34,7 +33,6 @@
 }
 
 .sliderTitle {
-  font-size: 0.8em;
   margin-bottom: 2px;
   margin-left: 8px;
   vertical-align: middle;
@@ -147,6 +145,7 @@ div.panel_impacts #mechm40344173223-2092 {
 
 .tipsy {
   z-index: 3000;
+  font-size: 1em;
 }
 .ui-dialog {
   z-index: 5000 !important;
@@ -167,6 +166,23 @@ div.panel_impacts #mechm40344173223-2092 {
   font-size: 1.5em;
 }
 
+#starsLeft {
+  background-image: url("img/star-pile.png");
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  font-size: 150%;
+  padding-top: 10px;
+}
+
+#coinsLeft {
+  padding-left: 50px;
+  font-size: 150%;
+  background-image: url("img/Coin_Illustrations_coin_pile.png");
+  background-repeat: no-repeat;
+  background-size: 49px 41px;
+  padding-top: 10px;
+  height: 40px;
+}
 
 /*
 #chart {
@@ -174,12 +190,6 @@ div.panel_impacts #mechm40344173223-2092 {
   left: 510px;
   position: absolute;
   top: 80px;
-}
-
-#starsLeft {
-  padding-left: 30px;
-  height: 40px;
-  position: absolute;
 }
 
 #itemsLeft {
@@ -196,3 +206,9 @@ div.panel_impacts #mechm40344173223-2092 {
 .clickTheIcon {
   font-size: .75em;
 }
+
+.introTxt {
+  color: #3a2825;
+  font-size: 1.8em;
+  font-weight: normal;
+  padding-top: 45px; }

@@ -10,7 +10,7 @@
         //region private fields and methods
         //var _ashxPath = "http://localhost:59159/ashx/";
         var _ashxPath = "http://ws.sasakistrategies.com/ashx/regionalScoresService/";
-        var _showAgainFn;
+        var _showAgainFn = null;
         var _initialize = function() {
             $("#reshowInstr").click(function () {
                 if (_showAgainFn != null) _showAgainFn();
@@ -140,8 +140,8 @@
             _showAgainFn = function() {
                 _self.showStarsDialog(numStars);
             };
-            var txt = "<p>Use the stars to rate how important each priority is to you. You can allocate up to <span style='text-decoration:underline'>up to</span> " + numStars + " stars.</p>";
-            txt += "<p>Watch your priority chart change as you indicate your highest priorities.</p>";
+            var txt = "<p>Below is a list of priorities that impact a community’s quality of life. You can rate these priorities by assigning each zero to five stars, based on how important that priority is to you. You can allocate <span style='text-decoration:underline'>up to</span> " + numStars + " stars.</p>";
+            txt += "<p>Watch the priority symbols on the right change as you rate your priorities.</p>";
             _showInstructionDialog(txt, {name: 'priorities'});
         };
 
@@ -159,7 +159,7 @@
             var mechDivIns = $("<div class='mechGrp' style='min-height: 30px'></div>").appendTo("#dialog");
             $("<div class='mechIcon'></div>").appendTo(mechDivIns).attr("id", "mechInsExample");
             new SAS.MiniBubbleChart(bubblechart).addMiniBubbleChart("#mechInsExample", topScorer.values);
-            var insTxt = $("<div class='mechText' style='font-size: 1em;'></div>").appendTo(mechDivIns);
+            var insTxt = $("<div class='mechText'></div>").appendTo(mechDivIns);
             SAS.localizr.live(topScorer.data.title,insTxt);
 
             mechDivIns.click(function () {
@@ -181,9 +181,11 @@
                 _self.showMoneyDialog(numCoins);
             };
             var txt = "<p>Put your money where your mouse is!</p>";
-            txt += "<p>You have <span style='text-decoration:underline'>up to</span> " + numCoins + " coins to spend. The coins represent relative cost within a fixed budget. " +
-                "To learn more about each project, hover (or tap if on a tablet) on each project description on the left side of your screen." +
-                "<p>See how the colors change in your priority bubble chart to show how well the options you select help achieve your priorities.</p>";
+            txt += "<p>The following categories contain strategies that require action and/or investment by the public or the City. In this exercise, " +
+              "you have a limited number of coins to invest in actions that support your priorities for Oklahoma City’s future growth. (To read more about each " +
+              "item, hover your mouse over the action or tap it if using a tablet.) To the left of each action is a stack of coins indicating the relative cost of the investment. " +
+              "You have <span style='text-decoration:underline'>up to</span> " + numCoins + " coins to spend by selecting the actions you would support.</p>";
+            txt += "<p>See how the colors change on the bubble chart to the right as you invest in actions that support your priorities.</p>"
             _showInstructionDialog(txt, {name: 'money'});
         };
 
@@ -191,9 +193,11 @@
             _showAgainFn = function() {
                 _self.showPoliciesDialog();
             };
-            var txt = "<p>Tell us what you think of these policies</p>";
-            txt += "<p>This is the last part of the survey before submitting! Please give the thumbs up or down to each of these policies.  If you are neutral or don't have an opinion, don't select either.</p>" +
-                "<p>The colors in your priority bubble chart will continue to show how well the options you select help achieve your priorities.</p>";
+            var txt = "<p> The city’s comprehensive plan will contain a number of policies and recommendations intended " +
+              "to move our community closer to reaching its goals. Tell us if you would support pursuing the following " +
+              "ideas by selecting the thumbs up, or if you would not support the idea by selecting the thumbs down. If " +
+              "you are neutral or don't have an opinion, don't select either.</p>";
+            txt += "<p>The colors in the bubble chart to the right will change to reflect how pursuing these ideas could help achieve your priorities.</p>";
             _showInstructionDialog(txt, {name: 'policies'});
         }
 

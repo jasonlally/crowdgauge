@@ -23,7 +23,7 @@
             });
             var starsLeft = (_totalStars - starsUsed);
             if (starsLeft == 0) {
-                $("#starsLeft").html("<span class='starsLeftNum'>0</span><small><span data-localize='starsleft.zero'>stars left (to redistribute, lower current ratings)</span></small>");
+                $("#starsLeft").html("<span class='starsLeftNum'>0</span><small><span data-localize='starsleft.zero'> stars left (to redistribute, lower current ratings)</span></small>");
             } else {
                 $("#starsLeft").html("<span data-localize='starsleft.first'>You have</span> <span class='starsLeftNum'>" + starsLeft + "</span> <span data-localize='starsleft.last'>star" + ((starsLeft > 1) ? "s" : "") + " left</span>");
             }
@@ -74,7 +74,7 @@
                 priority.value = _starAsPerc(priority.score);
                 var div = $("<div class='sliderGrp'></div>").appendTo("#priorityList");
                 var iconDiv = $("<div class='sliderIcon'></div>").appendTo(div);
-                var img = $("<img src='/files/" + priority.data.svgPath + "?color=grey" + "' width='26' height='26'>").appendTo(iconDiv);
+                var img = $("<img src='/files/" + priority.data.svgPath + "?color=grey" + "' width='22' height='22'>").appendTo(iconDiv);
 //                var img = $("<img class='sliderIcon' src='" + priority.icon + ".png' width='26' height='26'>").appendTo(div);
                 var ratingDiv = $("<div class='sliderDiv span4' id='slider" + i + "'></div>").appendTo(div);
                 priority.ratingDiv = ratingDiv;

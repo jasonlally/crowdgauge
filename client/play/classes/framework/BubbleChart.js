@@ -30,7 +30,7 @@
         var _format = d3.format(",d");
         var _nodes;
 
-        var _sizeColorRamp = ["#aade6f", "rgb(112, 148, 61)"];
+        var _sizeColorRamp = ["#CCCCCC", "#000000"];
 
         var _bubble = d3.layout.pack()
             .sort(null)

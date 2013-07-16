@@ -1,36 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
+    font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
     /*background: url('img/planokc_bg.jpg') repeat-x; */
     margin: 0px;
 }
 
 .ui-widget-header {
-    background: #3D9470;
-    border: #aade6f;
+    background: #0f82f5;
+    border: #0D74FF;
 }
 
 .popover {
-    background-color: #3D9470;
+    background-color: #FFF;
+    color: #000810;
 }
 
 .popover-title {
-    background-color: #3D9470;
-    border-bottom: 1px solid #aade6f;
+    background-color: #FFF;
+    border-bottom: 1px solid #000;
+    color: #000810;
 }
 
-
 .popover.top .arrow:after {
-    border-top-color: #3D9470;
+    border-top-color: #FFF;
 }
 
 .popover.right .arrow:after {
-    border-right-color: #3D9470;
+    border-right-color: #FFF;
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: #3D9470;
+    border-bottom-color: #FFF;
 }
 
 .popover.left .arrow:after {
-    border-left-color: #3D9470;
+    border-left-color: #FFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bree Serif', Georgia, serif;
 }
