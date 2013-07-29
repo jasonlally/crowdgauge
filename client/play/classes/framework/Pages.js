@@ -239,7 +239,7 @@
             }
             _bubbleChart.showDivs(true);
             _showMoreInfo(false);
-            _showNextButton(true, (_submitted) ? BTN_SHARE : BTN_SUBMIT);
+            _showNextButton(false, (_submitted) ? BTN_SHARE : BTN_SUBMIT);
             _setClickToInfoWin();
             if (!_policiesShown) {
                 _policiesShown = true;
