@@ -195,9 +195,9 @@
             };
             var txt = "<p> The city’s comprehensive plan will contain a number of policies and recommendations intended " +
               "to move our community closer to reaching its goals. Tell us if you would support pursuing the following " +
-              "ideas by selecting the thumbs up, or if you would not support the idea by selecting the thumbs down. If " +
-              "you are neutral or don't have an opinion, don't select either.</p>";
-            txt += "<p>The colors in the bubble chart to the right will change to reflect how pursuing these ideas could help achieve your priorities.</p>";
+              "directions by selecting the thumbs up, or if you would not support the direction by selecting the thumbs down. " +
+              "If you are neutral or don't have an opinion, don't select either.</p>";
+            txt += "<p>The colors in the bubble chart to the right will change to reflect how pursuing these directions could help achieve your priorities.</p>";
             _showInstructionDialog(txt, {name: 'policies'});
         }
 

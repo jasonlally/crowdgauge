@@ -56,7 +56,7 @@
         _pageTitles['priorities'] = 'My priorities for Oklahoma City’s future are...';
         _pageTitles['impacts'] = 'Explore how different projects and policies affect your priorities...';
         _pageTitles['money'] = 'I would support actions and investments that...';
-        _pageTitles['policies'] = 'I would support pursuing the following policy ideas...';
+        _pageTitles['policies'] = 'I would support pursuing the following policy directions...';
 
         var _selectTab = function (pageId) {
             $(".tabTitle").removeClass("tabTitleHighlight");
