@@ -16,7 +16,7 @@
         var BTN_SUBMIT = "submit";
         var BTN_SHARE = "share";
 
-        var _pageIds = [INTRO, PRIORITIES, MONEY, POLICIES];  //remove IMPACTS temp
+        var _pageIds = [INTRO, PRIORITIES, IMPACTS, MONEY, POLICIES];  //remove IMPACTS temp
         var _btnStates = [BTN_NEXT, BTN_SUBMIT, BTN_SHARE];
         var _cacheVersion = SAS.mainInstance.getCacheVersion();
         var _pageTitles = new Array();
@@ -375,7 +375,7 @@
                         //var priorityMs = _impactsStartTime.getTime() - _priorityStartTime.getTime();
                         var priorityMs = _votingStartTime.getTime() - _priorityStartTime.getTime();
                         var votingMs = _submitTime.getTime() - _votingStartTime.getTime();
-                        _dataManager.storeTimeSpent(Math.round(priorityMs / 1000), Math.round(votingMs / 1000));
+                        _dataManager.storeTimeSpent(Math.round(priorityMs / 1000), Math.round(impactsMs / 1000), Math.round(votingMs / 1000));
                     }
                     _dataManager.saveData(function (entryId) {
                         _submitted = true;

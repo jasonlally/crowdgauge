@@ -46,8 +46,8 @@
             _priorityData = priorityData;
         };
 
-        this.storeTimeSpent = function (prioritySecs, votingSecs) {  //Temp: remove impactsSecs
-            _timeData = {priorities:prioritySecs, voting:votingSecs};
+        this.storeTimeSpent = function (prioritySecs, impactsSecs, votingSecs) {  //Temp: remove impactsSecs
+            _timeData = {priorities:prioritySecs, impacts:impactsSecs, voting:votingSecs, };
         };
 
         this.storeVotes = function (voteData) {

@@ -1,11 +1,15 @@
 //region includes
 
 //endregion
+//
+/*
 if(process.env.NODE_ENV == 'production') {
     var config = require("../../config");
 } else {
     var config = require("../../config.development");
-}
+}*/
+var config = require("config");
+
 var nano = require('nano')(config.couchURL);
 var json2csv = require('json2csv');
 
